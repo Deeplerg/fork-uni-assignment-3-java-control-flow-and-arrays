@@ -9,7 +9,22 @@ public class Task02Main {
          */
     }
 
-    static String getSeason(int monthNumber) {
-        return "";//todo напишите здесь свою корректную реализацию этого метода, вместо существующей
+    static String getSeason(int monthNumber) throws IllegalArgumentException {
+        if(monthNumber < 1 || monthNumber > 12)
+            throw new IllegalArgumentException("monthNumber should be between 1 and 12. Got: " + monthNumber);
+
+        if(isBetween(monthNumber, 1, 2))
+            return "зима";
+        else if(isBetween(monthNumber, 3, 5))
+            return "весна";
+        else if(isBetween(monthNumber, 6, 8))
+            return "лето";
+        else if(isBetween(monthNumber, 9, 11))
+            return "осень";
+        return "зима";
+    }
+
+    private static boolean isBetween(int value, int min, int max) {
+        return value >= min && value <= max;
     }
 }
