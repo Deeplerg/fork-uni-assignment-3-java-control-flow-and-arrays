@@ -1,5 +1,8 @@
 package com.example.task09;
 
+import java.util.Arrays;
+import java.util.OptionalInt;
+
 public class Task09Main {
     public static void main(String[] args) {
         //здесь вы можете вручную протестировать ваше решение, вызывая реализуемый метод и смотря результат
@@ -13,9 +16,16 @@ public class Task09Main {
          */
     }
 
-    static int min(int[] arr) {
-        //todo напишите здесь свою корректную реализацию этого метода, вместо существующей
-        return 0;
+    static int min(int[] arr) throws IllegalArgumentException {
+        OptionalInt optionalMinimalValue = Arrays.stream(arr).min();
+
+        // simply returning optionalMinimalValue.getAsInt() is an option as well,
+        // however NoSuchElementException is less descriptive.
+
+        if(!optionalMinimalValue.isPresent())
+            throw new IllegalArgumentException("The array cannot be empty.");
+
+        return optionalMinimalValue.getAsInt();
     }
 
 }
