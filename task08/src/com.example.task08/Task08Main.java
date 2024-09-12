@@ -1,5 +1,7 @@
 package com.example.task08;
 
+import java.util.Arrays;
+
 public class Task08Main {
     public static void main(String[] args) {
         //здесь вы можете вручную протестировать ваше решение, вызывая реализуемый метод и смотря результат
@@ -13,8 +15,22 @@ public class Task08Main {
     }
 
     static long mult(int[] arr) {
-        //todo напишите здесь свою корректную реализацию этого метода, вместо существующей
-        return 1;
+        if(arr.length == 0)
+            return 0;
+
+        return Arrays.stream(arr).mapToLong(x -> x).reduce(1, (a, b) -> a * b);
     }
 
+    // a simpler implementation in case you wanted to see that instead
+    static long multSimple(int[] arr) {
+        if(arr.length == 0)
+            return 0;
+
+        long result = 1;
+        for (int n : arr) {
+            result *= n;
+        }
+
+        return result;
+    }
 }
